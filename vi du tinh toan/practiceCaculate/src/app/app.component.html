@@ -1,0 +1,81 @@
+<Button (click)="openModelBaiToan1()">Bài toán 1</Button>
+<div *ngIf="openBaiToan1 === false">
+  <p >Đây là lời giải đơn giản để tham khảo <br> Không nên copy code sang dự án do <b>Khác config</b>
+  giữa <b>Angular</b> và <b>Jhipster</b></p>
+  <h1>Đề bài:</h1>
+    <p>Cho 2 danh sách lấy từ Database như trên giao diện</p>
+    <p><b>Yêu cầu: </b> Tính toán số lượng đã nhận và số lượng còn lại</p>
+    <p>sau đó hiển thị lên giao diện </p>
+</div>
+<div *ngIf="openBaiToan1 === true">
+  <h1>Đề bài:</h1>
+  <p>Cho 2 danh sách lấy từ Database như trên giao diện</p>
+  <p><b>Yêu cầu: </b> Tính toán số lượng đã nhận và số lượng còn lại</p>
+  <p>sau đó hiển thị lên giao diện </p>
+  <tr>
+    <td>
+     <h2>Thông tin số lượng tồn</h2>
+      <table>
+        <thead >
+          <tr>
+            <th class="tables">SanPham-ID</th>
+            <th class="tables">Số lượng tồn</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data2">
+          <td style="text-align: center;">{{item.idData1}}</td>
+          <td style="text-align: center;">{{item.soLuongTon}}</td>
+        </tr>
+      </tbody>
+      </table>
+    </td>
+    <td>
+      <h2>Danh sách sản phẩm</h2>
+      <table>
+        <thead >
+          <tr>
+            <th class="tables">Tên sản phẩm</th>
+            <th class="tables">Đổi mới</th>
+            <th class="tables">Sửa chữa</th>
+            <th class="tables">Không bảo hành</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data">
+          <td >{{item.tenSanPham}}</td>
+          <td style="text-align: center;">{{item.doiMoi}}</td>
+          <td style="text-align: center;">{{item.suaChua}}</td>
+          <td style="text-align: center;">{{item.khongBaoHanh}}</td>
+        </tr>
+      </tbody>
+      </table>
+    </td>
+    <td><button (click)="caculate()" style="width: 150px;height: 35px;background-color: greenyellow;">Tính toán</button></td>
+  </tr>
+  <div *ngIf="openTable === true">
+    <h2 style="margin-left: 332px;">Danh sách tổng hợp sau tính toán</h2>
+    <table style="margin-left: 332px;">
+      <thead >
+        <tr>
+          <th class="tables">Tên sản phẩm</th>
+          <th class="tables">Đổi mới</th>
+          <th class="tables">Sửa chữa</th>
+          <th class="tables">Không bảo hành</th>
+          <th class="tables">Số lượng đã nhận</th>
+          <th class="tables">Số lượng còn lại</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data1">
+        <td >{{item.tenSanPham}}</td>
+        <td style="text-align: center;">{{item.doiMoi}}</td>
+        <td style="text-align: center;">{{item.suaChua}}</td>
+        <td style="text-align: center;">{{item.khongBaoHanh}}</td>
+        <td style="text-align: center;">{{item.soLuongDaNhan}}</td>
+        <td style="text-align: center;">{{item.soLuongConLai}}</td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
