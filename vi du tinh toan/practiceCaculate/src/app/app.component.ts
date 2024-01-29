@@ -8,6 +8,8 @@ import { count } from 'console';
 })
 export class AppComponent {
   title = 'practiceCaculate';
+  // -------------------------------------------- Bài toán 1 ---------------------------------------------------
+  //------------------------------------------ Khởi tạo biến 
   openTable = false;
   openBaiToan1 = false;
   //Ví dụ tính toán số lượng tiếp nhận
@@ -70,6 +72,72 @@ export class AppComponent {
       this.openBaiToan1 = false
     }else{
       this.openBaiToan1 = true;
+    }
+  }
+  //-------------------------------------------------------------- Bài toán 2 ------------------------------------------------------
+  openTableBaiToan2 = false;
+  openBaiToan2 = false;
+  // dữ lieu thông tin sản phẩm
+  dataBT2: {tenSanPham:string, id:number}[]=[
+    {tenSanPham:"Bóng đèn tube",id:1},
+    {tenSanPham:"Bóng đèn LED",id:2},
+    {tenSanPham:"Bóng đèn DownLight",id:3},
+    {tenSanPham:"Bóng đèn LED khung vuông",id:4},
+  ]
+  // dữ liệu thông tin trạng thái
+  data1BT2:{tenTrangThai:string,id:number}[]=[
+    {tenTrangThai:"Đổi mới",id:1},
+    {tenTrangThai:"Sửa chữa",id:2},
+    {tenTrangThai:"Không bảo hành",id:3},
+  ]
+  //dữ liệu thông tin số lượng tiếp nhận theo trạng thái
+  data2BT2: {soLuong:number,dataBT2Id:number,data1BT2Id:number}[]=[
+    {soLuong:5,dataBT2Id:1,data1BT2Id:1},
+    {soLuong:10,dataBT2Id:1,data1BT2Id:2},
+    {soLuong:6,dataBT2Id:1,data1BT2Id:3},
+    {soLuong:2,dataBT2Id:2,data1BT2Id:1},
+    {soLuong:15,dataBT2Id:2,data1BT2Id:2},
+    {soLuong:21,dataBT2Id:2,data1BT2Id:3},
+    {soLuong:87,dataBT2Id:3,data1BT2Id:1},
+    {soLuong:43,dataBT2Id:3,data1BT2Id:2},
+    {soLuong:25,dataBT2Id:3,data1BT2Id:3},
+    {soLuong:87,dataBT2Id:4,data1BT2Id:1},
+    {soLuong:56,dataBT2Id:4,data1BT2Id:2},
+    {soLuong:43,dataBT2Id:4,data1BT2Id:3},
+  ]
+  // dữ liệu hiển thị giao diện
+  data3BT2: any[] = [];
+  // hàm xử lý dữ liệu
+  showData(){
+    //set thong tin cua danh sach san pham => để tạo thông tin sản phẩm tổng hợp
+    for(let i = 0;i< this.dataBT2.length;i++){
+      const item = {tenSanPham:this.dataBT2[i].tenSanPham, slDoiMoi:0,slSuaChua:0,slKhongBaoHanh:0};
+      // set thông tin chi tiết số lượng của sản phẩm theo từng trạng thái
+      for(let j = 0;j<this.data2BT2.length;j++){
+        //so sánh tên sản phẩm 
+        if(this.dataBT2[i].id === this.data2BT2[j].dataBT2Id){
+           // fix cứng từng trường hợp trạng thái 
+          if(this.data2BT2[j].data1BT2Id === 1){
+            item.slDoiMoi = this.data2BT2[j].soLuong;
+          }
+          if(this.data2BT2[j].data1BT2Id === 2){
+            item.slSuaChua = this.data2BT2[j].soLuong;
+          }
+          if(this.data2BT2[j].data1BT2Id === 3){
+            item.slKhongBaoHanh = this.data2BT2[j].soLuong;
+          }
+        }
+      }
+      // lưu thông tin vào biến hiển thị giao diện
+      this.data3BT2.push(item);
+    }
+    alert("sắp xếp thành công")
+  }
+  openModelBaiToan2(){
+    if(this.openBaiToan2 === true){
+      this.openBaiToan2 = false
+    }else{
+      this.openBaiToan2 = true;
     }
   }
 }

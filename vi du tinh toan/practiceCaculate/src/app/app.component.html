@@ -1,3 +1,4 @@
+<!-------------------------------------------------------- Bài toán 1 ------------------------------------------------------->
 <Button (click)="openModelBaiToan1()">Bài toán 1</Button>
 <div *ngIf="openBaiToan1 === false">
   <p >Đây là lời giải đơn giản để tham khảo <br> Không nên copy code sang dự án do <b>Khác config</b>
@@ -79,3 +80,88 @@
     </table>
   </div>
 </div>
+<!----------------------------------------------------------------- Bài toán 2 ---------------------------------------------------------->
+<Button (click)="openModelBaiToan2()">Bài toán 2</Button>
+<div *ngIf="openBaiToan2 === false">
+  <h1>Đề bài:</h1>
+    <p>Cho 2 danh sách lấy từ Database như trên giao diện</p>
+    <p><b>Yêu cầu: </b> Hiển thị danh sách theo yêu cầu giao diện</p>
+</div>
+<div *ngIf="openBaiToan2 === true">
+  <h1>Đề bài:</h1>
+    <p>Cho 2 danh sách lấy từ Database như trên giao diện</p>
+    <p><b>Yêu cầu: </b> Hiển thị danh sách theo yêu cầu giao diện</p>
+  <tr>
+    <td>
+     <h2> <br>Thông tin sản phẩm</h2>
+      <table>
+        <thead >
+          <tr>
+            <th class="tables">Sản phẩm</th>
+            <th class="tables">ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dataBT2">
+          <td style="text-align: center;">{{item.tenSanPham}}</td>
+          <td style="text-align: center;">{{item.id}}</td>
+        </tr>
+      </tbody>
+      </table>
+    </td>
+    <td>
+      <h2><br>Danh sách trạng thái</h2>
+      <table>
+        <thead >
+          <tr>
+            <th class="tables">ID</th>
+            <th class="tables">Tên trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data1BT2">
+          <td style="text-align: center;">{{item.id}}</td>
+          <td style="text-align: center;">{{item.tenTrangThai}}</td>
+        </tr>
+      </tbody>
+      </table>
+    </td>
+    <td><h2>Danh sách số lượng sản phẩm <br>tiếp nhận theo từng trạng thái</h2>
+      <table>
+        <thead >
+          <tr>
+            <th class="tables">Số lượng</th>
+            <th class="tables">ID trạng thái</th>
+            <th class="tables">ID sản phẩm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data2BT2">
+          <td style="text-align: center;">{{item.soLuong}}</td>
+          <td style="text-align: center;">{{item.data1BT2Id}}</td>
+          <td style="text-align: center;">{{item.dataBT2Id}}</td>
+        </tr>
+      </tbody>
+      </table></td>
+    <td><button (click)="showData()" style="width: 150px;height: 35px;background-color: greenyellow;">Tổng hợp thông tin</button></td>
+  </tr>
+    <h2 style="margin-left: 332px;">Danh sách tổng hợp thông tin</h2>
+    <table style="margin-left: 332px;">
+      <thead >
+        <tr>
+          <th class="tables">Tên sản phẩm</th>
+          <th class="tables">Đổi mới</th>
+          <th class="tables">Sửa chữa</th>
+          <th class="tables">Không bảo hành</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data3BT2">
+        <td style="text-align: center;">{{item.tenSanPham}}</td>
+        <td style="text-align: center;">{{item.slDoiMoi}}</td>
+        <td style="text-align: center;">{{item.slSuaChua}}</td>
+        <td style="text-align: center;">{{item.slKhongBaoHanh}}</td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
