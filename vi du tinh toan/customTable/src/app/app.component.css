@@ -1,0 +1,28 @@
+.table-header{
+    background-color: #1abc9c;
+    text-align: center;
+    border: 3px solid black
+}
+.table-container{
+    width: 100%;
+    border: 1px solid;
+}
+.table-header-item{
+    border: 1px solid black 
+}
+.table-body{
+    text-align: center;
+}
+.table-body-item-view{
+    background-color: #fff;
+    border-radius: 5px;
+}
+.pagination {
+    display: inline-block;
+  }
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }

@@ -153,6 +153,7 @@
           <th class="tables">Đổi mới</th>
           <th class="tables">Sửa chữa</th>
           <th class="tables">Không bảo hành</th>
+          <th class="tables">Tiến độ</th>
         </tr>
       </thead>
       <tbody>
@@ -161,7 +162,20 @@
         <td style="text-align: center;">{{item.slDoiMoi}}</td>
         <td style="text-align: center;">{{item.slSuaChua}}</td>
         <td style="text-align: center;">{{item.slKhongBaoHanh}}</td>
+        <td >
+          <div class="Loading"></div>
+        %</td>
       </tr>
     </tbody>
     </table>
   </div>
+
+    <div class="container">test
+      <div class="Loading"></div>
+    </div>
+
+    <div>{{dataString}}</div>
+    <div>LO: {{positionLO}}</div>
+    <div>SL: {{positionSL}}</div>
+    <div>Storage: {{storageUnit}}</div>
+    <div>subStorage: {{subStorageUnit}}</div>

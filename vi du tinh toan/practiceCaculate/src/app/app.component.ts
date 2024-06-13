@@ -107,6 +107,12 @@ export class AppComponent {
   ]
   // dữ liệu hiển thị giao diện
   data3BT2: any[] = [];
+  //Chuỗi string
+  dataString ='LO02-C04-SLRACK-02-04';
+  storageUnit='';
+  subStorageUnit='';
+  positionLO=0;
+  positionSL=0;
   // hàm xử lý dữ liệu
   showData(){
     //set thong tin cua danh sach san pham => để tạo thông tin sản phẩm tổng hợp
@@ -139,5 +145,51 @@ export class AppComponent {
     }else{
       this.openBaiToan2 = true;
     }
+  }
+  ngOnInit():void{
+  const  data = [
+      {Id:1, name: 'ABC', chiTietSP:1,phanTichSanPham:1,theLoai:'loi ky thuat',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'Cầu chì',weight: 10 },
+      {Id:1, name: 'ABC', chiTietSP:1,phanTichSanPham:1,theLoai:'loi ky thuat',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'diode',weight: 10 },
+      {Id:1, name: 'ABC', chiTietSP:1,phanTichSanPham:1,theLoai:'loi linh dong',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'Tụ',weight: 10 },
+      {Id:1, name: 'ABC', chiTietSP:2,phanTichSanPham:2,theLoai:'loi ky thuat',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 10 },
+      {Id:1, name: 'ABC', chiTietSP:2,phanTichSanPham:2,theLoai:'loi linh dong',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 14 },
+      {Id:1, name: 'ABC', chiTietSP:2,phanTichSanPham:3,theLoai:'loi ky thuat',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 16 },
+      {Id:2, name: 'DEF', chiTietSP:3,phanTichSanPham:4,theLoai:'loi ky thuat',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 23 },
+      {Id:2, name: 'DEF', chiTietSP:3,phanTichSanPham:4,theLoai:'loi linh dong',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 23 },
+      {Id:2, name: 'DEF', chiTietSP:3,phanTichSanPham:4,theLoai:'loi linh dong',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 23 },
+      {Id:2, name: 'DEF', chiTietSP:4,phanTichSanPham:5,theLoai:'loi ky thuat',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 23 },
+      {Id:2, name: 'DEF', chiTietSP:4,phanTichSanPham:5,theLoai:'loi linh dong',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 23 },
+      {Id:2, name: 'DEF', chiTietSP:4,phanTichSanPham:5,theLoai:'loi linh dong',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 22 },
+      {Id:4, name: 'GHI', chiTietSP:5,phanTichSanPham:6,theLoai:'loi ky thuat',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 44 },
+      {Id:4, name: 'GHI', chiTietSP:5,phanTichSanPham:6,theLoai:'loi linh dong',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 44 },
+      {Id:4, name: 'GHI', chiTietSP:5,phanTichSanPham:6,theLoai:'loi linh dong',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 44 },
+      {Id:4, name: 'GHI', chiTietSP:6,phanTichSanPham:7,theLoai:'loi ky thuat',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 44 },
+      {Id:4, name: 'GHI', chiTietSP:6,phanTichSanPham:7,theLoai:'loi linh dong',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 44 },
+      {Id:4, name: 'GHI', chiTietSP:6,phanTichSanPham:7,theLoai:'loi linh dong',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 44 },
+      {Id:4, name: 'GHI', chiTietSP:7,phanTichSanPham:8,theLoai:'loi ky thuat',sumLoiKyThuat:0,sumLoiLinhDong:0,tenLoi:'',weight: 41 }
+    ]
+    const data1 = '01234567891011121314151617' ;
+    console.log(data1.substr(0,13));
+    const calculated = data.reduce((acc:any[], item) => {
+      
+      let accItem = acc.find((ai:any) => ai.Id === item.Id 
+      && ai.chiTietSP === item.chiTietSP 
+      // && ai.phanTichSanPham === item.phanTichSanPham 
+      // && ai.theLoai === item.theLoai
+      )
+      
+      if(accItem){
+          accItem.weight += item.weight 
+      }else{
+         acc.push(item)
+      }
+    
+      return acc;
+    },[])
+    console.log(calculated);
+    this.positionSL=this.dataString.indexOf('SL')
+    this.positionLO=this.dataString.indexOf('LO')
+    this.storageUnit=this.dataString.slice(this.positionLO+2,this.positionSL-1)
+    this.subStorageUnit=this.dataString.slice(this.positionSL+2)
   }
 }

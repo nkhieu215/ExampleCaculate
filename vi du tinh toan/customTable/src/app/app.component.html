@@ -1,0 +1,55 @@
+<div>Tìm kiếm theo ngày tháng <br>
+  Start <input type="date" [(ngModel)]="dayStart"
+  [ngModelOptions]="{ standalone: true }">  End <input type="date" [(ngModel)]="dayEnd"
+  [ngModelOptions]="{ standalone: true }"> <button (click)="searchByRange()"><fa-icon [icon]="faMagnifyingGlass"></fa-icon></button>
+</div>
+<table class="table-container">
+  <thead class="table-header">
+    <td class="table-header-item"> STT</td>
+    <td class="table-header-item">Thành phố <input type="text" [(ngModel)]="searchCity.name"
+        [ngModelOptions]="{ standalone: true }">
+      <button (click)="searchCityByProperties()"><fa-icon [icon]="faMagnifyingGlass"></fa-icon></button>
+    </td>
+    <td class="table-header-item">Khu vực <input type="text" [(ngModel)]="searchCity.nation"
+        [ngModelOptions]="{ standalone: true }"><button (click)="searchCityByProperties()"><fa-icon
+          [icon]="faMagnifyingGlass"></fa-icon></button></td>
+    <td class="table-header-item">Dân số <input type="number" [(ngModel)]="searchCity.numberOfPeople"
+        [ngModelOptions]="{ standalone: true }"><button (click)="searchCityByProperties()"><fa-icon
+          [icon]="faMagnifyingGlass">
+        </fa-icon></button>
+      <select id="car" [(ngModel)]="cases" [ngModelOptions]="{ standalone: true }" (change)="checkCases()">
+        <option value="0"></option>
+        <option value="1">Lớn hơn</option>
+        <option value="2">Nhỏ hơn</option>
+        <option value="3">Bằng</option>
+        <option value="4">Khác</option>
+      </select>
+    </td>
+    <td class="table-header-item">Diện tích <input type="number" [(ngModel)]="searchCity.acreage"
+        [ngModelOptions]="{ standalone: true }"><button (click)="searchCityByProperties()"><fa-icon
+          [icon]="faMagnifyingGlass">
+        </fa-icon></button>
+      <select id="cars" [(ngModel)]="casesAcreage" [ngModelOptions]="{ standalone: true }" (change)="checkCases()">
+        <option value="0"></option>
+        <option value="1">Lớn hơn</option>
+        <option value="2">Nhỏ hơn</option>
+        <option value="3">Bằng</option>
+        <option value="4">Khác</option>
+      </select>
+    </td>
+    <td class="table-header-item">Ngày thành lập</td>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of city;let i = index" ng-repeat-start="item in items">
+      <td class="table-body">{{i+1}}</td>
+      <td>{{item.name}} <button class="table-body-item-view" (click)="viewFamilyByCity(item.id)"><fa-icon
+            [icon]="faCaretDown"></fa-icon></button></td>
+      <td>{{item.nation}}</td>
+      <td class="table-body">{{item.numberOfPeople}}</td>
+      <td class="table-body">{{item.acreage}}</td>
+      <td>{{item.dateCreate | date: 'YYYY-MM-dd hh:mm:ss '}}</td>
+    </tr>
+  </tbody>
+</table>
+<input type="file" (change)="handleFileInput($event)">
+<img src={{url}}>
